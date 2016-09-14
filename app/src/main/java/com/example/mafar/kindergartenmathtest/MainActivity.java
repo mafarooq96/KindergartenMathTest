@@ -47,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
         TextView int2 = (TextView) findViewById(R.id.number2);
         Button ans1 = (Button)findViewById(R.id.answer1);
         Button ans2 = (Button)findViewById(R.id.answer2);
-        Button ans3 = (Button)findViewById(R.id.answer2);
+        Button ans3 = (Button)findViewById(R.id.answer3);
         Button ans4 = (Button)findViewById(R.id.answer4);
 
         int1.setText(add1+"");
-        //int2.setText(add2);
-        //ans1.setText(answers[0]);
-        //ans2.setText(answers[1]);
-       // ans3.setText(answers[2]);
-        //ans4.setText(answers[3]);
+        int2.setText(add2+"");
+        ans1.setText(answers[0]+"");
+        ans2.setText(answers[1]+"");
+        ans3.setText(answers[2]+"");
+        ans4.setText(answers[3]+"");
 
 
 
