@@ -5,11 +5,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    Random intGenerator = new Random();
+    int add1 = intGenerator.nextInt(10);
+    int add2= intGenerator.nextInt(10);
+    int max = (add1>add2)? add1:add2;
+    int sum = add1+add2;
 
 
     @Override
@@ -18,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Random intGenerator = new Random();
+/*        Random intGenerator = new Random();
         int add1 = intGenerator.nextInt(10);
         int add2= intGenerator.nextInt(10);
         int max = (add1>add2)? add1:add2;
-        int sum = add1+add2;
+        int sum = add1+add2;*/
+
+
         //print("Add the following numbers");
         //print( add1 + " + "+ add2 + " = ? ");
 
@@ -68,6 +77,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void buttonOnClick (View v) {
+
+        Button b = (Button) v;
+        String buttonText = b.getText().toString();
+        int answer = Integer.parseInt(buttonText);
+
+        TextView result = (TextView) findViewById(R.id.result);
+
+
+        if (answer!=sum)
+            Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
+        else {
+            Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
+            result.setText(sum + "");
+            }
+        }
 
     public static void CheckIfContains(int[] array, final int key) {
         for (final int i : array) {
