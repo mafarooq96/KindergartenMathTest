@@ -44,10 +44,16 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < (19- max); i++){
             a[i]= max+i;
         }
+
+        Shuffle(a);
+
         int[] answers = new int[4];
-        for (int count = 0; count < 4; count++){
+
+        System.arraycopy(a, 0, answers, 0, 4);
+
+/*        for (int count = 0; count < 4; count++){
             answers[count] = a[(int)(Math.random() * a.length)];
-        }
+        }*/
 
        CheckIfContains (answers,sum);
         //System.out.println(Arrays.toString(answers));
@@ -104,6 +110,19 @@ public class MainActivity extends AppCompatActivity {
 
         array[(int)(Math.random() * array.length)]= key;
         return;
+    }
+
+    public static void Shuffle(int[] a)
+    {
+        int n = a.length;
+        for (int i = 0; i < n; i++)
+        {
+            // between i and n-1
+            int r = i + (int) (Math.random() * (n-i));
+            int tmp = a[i];    // swap
+            a[i] = a[r];
+            a[r] = tmp;
+        }
     }
 
 }
