@@ -10,19 +10,47 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.Random;
 
+
 public class MainActivity extends AppCompatActivity {
 
-    Random intGenerator = new Random();
+    //RandomMathMCQ q1= new RandomMathMCQ(true);
+    RandomMathMCQ q1;
+    boolean isAddition;
+
+   // Bundle bundle = getIntent().getExtras();
+   // String testName = bundle.getString("testName");
+
+    //Extract the data…
+   // String testName = getIntent().getExtras().getString("testName");
+   //boolean isAddition = (testName=="Addition Test")? true:false;
+    //RandomMathMCQ q1= new RandomMathMCQ(isAddition);
+
+/*    Random intGenerator = new Random();
     int add1 = intGenerator.nextInt(10);
     int add2= intGenerator.nextInt(10);
     int max = (add1>add2)? add1:add2;
-    int sum = add1+add2;
+    int sum = add1+add2;*/
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle bundle = getIntent().getExtras();
+        String testName = bundle.getString("testName").toUpperCase();
+        print(testName);
+
+        //isAddition = (testName == "ADDITION TEST")? true:false;
+        isAddition = testName.equals("ADDITION TEST");
+        q1= new RandomMathMCQ(isAddition);
+        TextView operator = (TextView) findViewById(R.id.textView2);
+        if(!isAddition)
+            operator.setText(" - ");
+
+        //Get the bundle
+       // Bundle bundle = getIntent().getExtras();
 
 
 /*        Random intGenerator = new Random();
@@ -40,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        int[] a = new int[19- max];
+/*        int[] a = new int[19- max];
         for (int i = 0; i < (19- max); i++){
             a[i]= max+i;
         }
@@ -49,13 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
         int[] answers = new int[4];
 
-        System.arraycopy(a, 0, answers, 0, 4);
+        System.arraycopy(a, 0, answers, 0, 4);*/
 
 /*        for (int count = 0; count < 4; count++){
             answers[count] = a[(int)(Math.random() * a.length)];
         }*/
 
-       CheckIfContains (answers,sum);
+      // CheckIfContains (answers,sum);
         //System.out.println(Arrays.toString(answers));
 
         TextView int1 = (TextView) findViewById(R.id.number1);
@@ -65,12 +93,19 @@ public class MainActivity extends AppCompatActivity {
         Button ans3 = (Button)findViewById(R.id.answer3);
         Button ans4 = (Button)findViewById(R.id.answer4);
 
-        int1.setText(add1+"");
+/*        int1.setText(add1+"");
         int2.setText(add2+"");
         ans1.setText(answers[0]+"");
         ans2.setText(answers[1]+"");
         ans3.setText(answers[2]+"");
-        ans4.setText(answers[3]+"");
+        ans4.setText(answers[3]+"");*/
+
+        int1.setText(q1.getInt1()+"");
+        int2.setText(q1.getInt2()+"");
+        ans1.setText(q1.getAnswers()[0]+"");
+        ans2.setText(q1.getAnswers()[1]+"");
+        ans3.setText(q1.getAnswers()[2]+"");
+        ans4.setText(q1.getAnswers()[3]+"");
 
 
 
@@ -88,20 +123,27 @@ public class MainActivity extends AppCompatActivity {
 
         Button b = (Button) v;
         String buttonText = b.getText().toString();
-        int answer = Integer.parseInt(buttonText);
+        int selected = Integer.parseInt(buttonText);
+        int answer= (isAddition)?q1.getSum():q1.getSub();
 
         TextView result = (TextView) findViewById(R.id.result);
+        //TextView operator = (TextView) findViewById(R.id.textView2);
+        //if(!isAddition)
+            //operator.setText(" - ");
 
-
-        if (answer!=sum)
+        if (selected!=answer)
             Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
         else {
             Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
-            result.setText(sum + "");
+            result.setText(answer + "");
             }
         }
+    private void print(String msg){
+        System.out.println(msg);
 
-    public static void CheckIfContains(int[] array, final int key) {
+    }
+
+/*    public static void CheckIfContains(int[] array, final int key) {
         for (final int i : array) {
             if (i == key) {
                 return;
@@ -110,9 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
         array[(int)(Math.random() * array.length)]= key;
         return;
-    }
+    }*/
 
-    public static void Shuffle(int[] a)
+/*    public static void Shuffle(int[] a)
     {
         int n = a.length;
         for (int i = 0; i < n; i++)
@@ -123,6 +165,6 @@ public class MainActivity extends AppCompatActivity {
             a[i] = a[r];
             a[r] = tmp;
         }
-    }
+    }*/
 
 }
