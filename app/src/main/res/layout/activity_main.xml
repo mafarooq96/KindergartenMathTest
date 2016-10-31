@@ -19,12 +19,12 @@
         android:background="#2061bd"
         android:textColor="#ffffff"
         android:textSize="60dp"
+        android:onClick="buttonOnClick"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="47dp"
-        android:layout_marginStart="47dp"
-        android:onClick="buttonOnClick" />
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="46dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -74,16 +74,18 @@
         android:text="8"
         android:id="@+id/number1"
         android:textSize="50dp"
-        android:layout_alignLeft="@+id/answer1"
-        android:layout_alignStart="@+id/answer1" />
+        android:layout_alignTop="@+id/result"
+        android:layout_toLeftOf="@+id/answer3"
+        android:layout_toStartOf="@+id/answer3" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=" +"
         android:id="@+id/textView2"
         android:textSize="50dp"
-        android:layout_alignTop="@+id/number1"
+        android:layout_gravity="center"
+        android:layout_alignTop="@+id/result"
         android:layout_toRightOf="@+id/number1"
         android:layout_toEndOf="@+id/number1" />
 
@@ -103,9 +105,9 @@
         android:text="="
         android:id="@+id/equal"
         android:textSize="50dp"
-        android:layout_alignTop="@+id/result"
-        android:layout_toLeftOf="@+id/result"
-        android:layout_toStartOf="@+id/result" />
+        android:layout_alignTop="@+id/textView2"
+        android:layout_toLeftOf="@+id/answer2"
+        android:layout_toStartOf="@+id/answer2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -113,8 +115,35 @@
         android:text="\?"
         android:id="@+id/result"
         android:textSize="50dp"
+        android:layout_marginTop="63dp"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/answer2"
         android:layout_alignEnd="@+id/answer2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/button"
+        android:background="#2061bd"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:onClick="nextButtonOnClick"
+        android:capitalize="none"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1/5"
+        android:id="@+id/problemNum"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/equal"
+        android:layout_alignEnd="@+id/equal"
+        android:layout_alignLeft="@+id/number2"
+        android:layout_alignStart="@+id/number2" />
 
 </RelativeLayout>

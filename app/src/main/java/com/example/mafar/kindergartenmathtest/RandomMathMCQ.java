@@ -67,6 +67,7 @@ public class RandomMathMCQ {
         }
         else
         {
+            if (int1<int2) Swap();
             int arraySize =(max>3)? max:4;
 
             a = new int[arraySize];
@@ -83,6 +84,15 @@ public class RandomMathMCQ {
         //System.arraycopy(a, 0, answers, 0, 4);
 
     }
+
+    // swap int1 and int2 if int1<int2 for subtraction
+    public void Swap()
+    {
+        int temp= int1;
+        int1=int2;
+        int2=temp;
+    }
+
 
 // checks if the result already exist in the answers array. If not it inserts the result
 // in the answers array by replacing a random element from the answers array.
